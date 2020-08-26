@@ -4,6 +4,7 @@ var express = require("express");
 var path = require("path");
 var fs = require('fs');
 
+
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -18,6 +19,7 @@ app.use(express.static("public"));
 // reservation (DATA)
 // =============================================================
 const notes = require("./db/db.json");
+const { response } = require("express");
 // const { fstat } = require("fs");
 // console.log("notes = ", notes);
 
@@ -74,12 +76,27 @@ app.post("/api/notes", function(req, res) {
 });
 
 
-// app.delete("/api/notes/" + this.id, function(req, res) {
-app.delete("/api/notes", function(req, res) {
+app.delete("/api/notes/:id", function(req, res) {
     console.log("In app.delete...");
-    console.log("id in app.delete = ", req);
-    console.log("this.id = " + this.id);
-    console.log("idglobal = " + idglobal);
+    // console.log("id in app.delete = ", req);
+    console.log("req.params.id = ", req.params.id);
+    console.log("notes = ", notes);
+
+    // $.each(notes, function(i) {
+    //     if (notes[i].id === req.params.id) {
+    //         notes.splice(i, 1);
+    //         return false;
+    //     }
+    // });
+
+    for (let i = 0; i < notes.length; i++) {
+        if (notes[i].id === req.params.id) {
+            notes.splice(i, 1);
+            return false;
+        }
+    };
+
+    res.send(req.params.id)
 });
 
 // Starts the server to begin listening
