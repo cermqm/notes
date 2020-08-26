@@ -10,7 +10,7 @@ let activeNote = {};
 // A function for getting all notes from the db
 const getNotes = () => {
     return $.ajax({
-        url: "/api/notes",
+        url: "/api/notes/",
         method: "GET",
     });
 };
@@ -18,7 +18,7 @@ const getNotes = () => {
 // A function for saving a note to the db
 const saveNote = (note) => {
     return $.ajax({
-        url: "/api/notes",
+        url: "/api/notes/",
         data: note,
         method: "POST",
     });
@@ -26,8 +26,12 @@ const saveNote = (note) => {
 
 // A function for deleting a note from the db
 const deleteNote = (id) => {
+    console.log("In deleteNote....");
+    console.log("id = ", id);
     return $.ajax({
-        url: "api/notes/" + id,
+        url: "/api/notes/" + id,
+        // url: "/api/notes/",
+        // data: id,
         method: "DELETE",
     });
 };
@@ -64,10 +68,15 @@ const handleNoteSave = function() {
 
 // Delete the clicked note
 const handleNoteDelete = function(event) {
-    // prevents the click listener for the list from being called when the button inside of it is clicked
+    console.log("In handleNoteDelete...")
+        // prevents the click listener for the list from being called when the button inside of it is clicked
     event.stopPropagation();
 
     const note = $(this).parent(".list-group-item").data();
+    console.log("Note = ", note);
+
+    console.log("activeNote.id = ", activeNote.id);
+    console.log("note.id = ", note.id);
 
     if (activeNote.id === note.id) {
         activeNote = {};
@@ -81,7 +90,9 @@ const handleNoteDelete = function(event) {
 
 // Sets the activeNote and displays it
 const handleNoteView = function() {
+    console.log("in handleNoteView");
     activeNote = $(this).data();
+    console.log("activeNote = ", activeNote);
     renderActiveNote();
 };
 
