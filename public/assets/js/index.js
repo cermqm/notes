@@ -3,6 +3,7 @@ const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
+let idglobal = 0;
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
@@ -27,10 +28,12 @@ const saveNote = (note) => {
 // A function for deleting a note from the db
 const deleteNote = (id) => {
     console.log("In deleteNote....");
-    console.log("id = ", id);
+    console.log("id in deleteNote = ", id);
+    idglobal = id;
+    console.log("idglobal = " + idglobal);
     return $.ajax({
-        url: "/api/notes/" + id,
-        // url: "/api/notes/",
+        // url: "/api/notes/" + id,
+        url: "/api/notes/",
         // data: id,
         method: "DELETE",
     });

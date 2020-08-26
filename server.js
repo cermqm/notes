@@ -74,9 +74,12 @@ app.post("/api/notes", function(req, res) {
 });
 
 
-app.delete("/api/notes/" + this.id, function(req, res) {
+// app.delete("/api/notes/" + this.id, function(req, res) {
+app.delete("/api/notes", function(req, res) {
     console.log("In app.delete...");
-    console.log("id = ", req);
+    console.log("id in app.delete = ", req);
+    console.log("this.id = " + this.id);
+    console.log("idglobal = " + idglobal);
 });
 
 // Starts the server to begin listening
