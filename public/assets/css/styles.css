@@ -154,7 +154,7 @@ body {
     z-index: 4;
     top: 135%;
     /* width: 250%; */
-    margin-left: -300%;
+    margin-left: -250%;
     left: 125%;
     transition: opacity 0.3s;
 }
@@ -175,7 +175,40 @@ body {
     opacity: 1;
 }
 
+.tooltip-page-left {
+    position: relative;
+    display: inline-block;
+}
 
-/* .icons {
-    padding: 25px;
-} */
+.tooltip-page-left>span {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: .6em;
+    position: absolute;
+    z-index: 4;
+    top: 100%;
+    /* width: 250%; */
+    margin-left: -100%;
+    left: 125%;
+    transition: opacity 0.3s;
+}
+
+.tooltip-page-left>span::after {
+    content: " ";
+    position: absolute;
+    bottom: 95%;
+    left: 50%;
+    margin-left: -12px;
+    border-width: 12px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.tooltip-page-left:hover>span {
+    visibility: visible;
+    opacity: 1;
+}
