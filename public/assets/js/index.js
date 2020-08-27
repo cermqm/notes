@@ -96,6 +96,8 @@ const handleRenderSaveBtn = function() {
     if (!$noteTitle.val().trim() || !$noteText.val().trim()) {
         $saveNoteBtn.hide();
     } else {
+        $noteTitle.attr("readonly", false);
+        $noteText.attr("readonly", false);
         $saveNoteBtn.show();
     }
 };
@@ -146,6 +148,8 @@ $newNoteBtn.on("click", handleNewNoteView);
 $noteList.on("click", ".delete-note", handleNoteDelete);
 $noteTitle.on("keyup", handleRenderSaveBtn);
 $noteText.on("keyup", handleRenderSaveBtn);
+$noteTitle.on("click", handleRenderSaveBtn);
+$noteText.on("click", handleRenderSaveBtn);
 
 // Gets and renders the initial list of notes
 getAndRenderNotes();

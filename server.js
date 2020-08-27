@@ -86,7 +86,7 @@ app.delete("/api/notes/:id", function(req, res) {
     fs.writeFile("./db/db.json", JSON.stringify(notes), err => {
         // Checking for errors 
         if (err) throw err;
-        console.log("Done writing"); // Success
+        // console.log("Done writing"); // Success
     })
 
     res.send(req.params.id)
