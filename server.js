@@ -21,7 +21,6 @@ app.use(express.static("public"));
 const notes = require("./db/db.json");
 const { response } = require("express");
 // const { fstat } = require("fs");
-// console.log("notes = ", notes);
 
 // Routes
 // =============================================================
@@ -37,7 +36,6 @@ app.get("/notes", function(req, res) {
 
 // Displays Notes
 app.get("/api/notes", function(req, res) {
-    // console.log(res);
     return res.json(notes);
 });
 
@@ -57,46 +55,34 @@ app.post("/api/notes", function(req, res) {
     var mi = tdate.getMinutes();
     var s = tdate.getSeconds();
 
-    // console.log("month = ", tdate.getMonth());
-    // console.log("month letters = ", m);
-
     currdate = '' + (d <= 9 ? '0' + d : d) + '-' + m + '-' + y + "_" + h + ":" + mi + ":" + s;
-    // console.log(currdate);
     note.id = currdate;
     notes.push(note);
-    // console.log("note = ", note);
-    // console.log("notes = ", notes);
-    // console.log("type of notes = ", typeof notes);
+    fs.writeFile("./db/db.json", JSON.stringify(notes), err => {
+        // Checking for errors 
+        if (err) throw err;
+    })
+    res.send(req.params.id)
+    return (notes);
+});
+
+
+app.delete("/api/notes/:id", function(req, res) {
+
+    for (let i = 0; i < notes.length; i++) {
+        if (notes[i].id === req.params.id) {
+            notes.splice(i, 1);
+        }
+    };
+
     fs.writeFile("./db/db.json", JSON.stringify(notes), err => {
         // Checking for errors 
         if (err) throw err;
         console.log("Done writing"); // Success
     })
 
-});
-
-
-app.delete("/api/notes/:id", function(req, res) {
-    console.log("In app.delete...");
-    // console.log("id in app.delete = ", req);
-    console.log("req.params.id = ", req.params.id);
-    console.log("notes = ", notes);
-
-    // $.each(notes, function(i) {
-    //     if (notes[i].id === req.params.id) {
-    //         notes.splice(i, 1);
-    //         return false;
-    //     }
-    // });
-
-    for (let i = 0; i < notes.length; i++) {
-        if (notes[i].id === req.params.id) {
-            notes.splice(i, 1);
-            return false;
-        }
-    };
-
     res.send(req.params.id)
+    return (notes);
 });
 
 // Starts the server to begin listening
