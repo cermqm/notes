@@ -3,6 +3,11 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background: url("hyroglifics.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .save-note {
@@ -18,7 +23,7 @@ body {
 
 .note-textarea,
 .note-title {
-    color: #000000;
+    color: black;
     width: 100%;
     outline: none;
     border: none;
@@ -28,6 +33,7 @@ body {
     resize: none;
     height: calc(100% - 63px);
     padding-top: 15px;
+    color: black;
 }
 
 .note-title {
@@ -38,7 +44,7 @@ body {
 
 .note-title:read-only,
 .note-textarea:read-only {
-    color: #757575;
+    color: black;
 }
 
 .list-container .card {
@@ -71,3 +77,105 @@ body {
     padding: 20px;
     cursor: pointer;
 }
+
+.card,
+.list-group-item,
+.note-title,
+.note-textarea,
+.navbar,
+.bg-dark {
+    background-color: transparent;
+    /* opacity: 0.1; */
+    color: black;
+}
+
+.navbar-brand {
+    color: black;
+}
+
+.navbar {
+    color: black;
+    /* border: black; */
+    border-bottom: 1px solid black;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip>span {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: .6em;
+    position: absolute;
+    z-index: 4;
+    bottom: 135%;
+    width: 250%;
+    margin-left: -125%;
+    left: 125%;
+    transition: opacity 0.3s;
+}
+
+.tooltip>span::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -12px;
+    border-width: 12px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover>span {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-page-top {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-page-top>span {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: .6em;
+    position: absolute;
+    z-index: 4;
+    top: 135%;
+    /* width: 250%; */
+    margin-left: -300%;
+    left: 125%;
+    transition: opacity 0.3s;
+}
+
+.tooltip-page-top>span::after {
+    content: " ";
+    position: absolute;
+    bottom: 95%;
+    left: 50%;
+    margin-left: -12px;
+    border-width: 12px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.tooltip-page-top:hover>span {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* .icons {
+    padding: 25px;
+} */
