@@ -16,11 +16,11 @@ app.use(express.json());
 // app.use(express.static(__dirname + "/public"));
 app.use(express.static("public"));
 
-// reservation (DATA)
+// Note (DATA)
 // =============================================================
 const notes = require("./db/db.json");
 const { response } = require("express");
-// const { fstat } = require("fs");
+const { fileURLToPath } = require("url");
 
 // Routes
 // =============================================================
@@ -43,9 +43,9 @@ app.get("/api/notes", function(req, res) {
 app.post("/api/notes", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
-    //add a unique ID to note - use date/time/seconds from previous project.
     var note = req.body;
 
+    // Creating a unique id for the note - using date/time including seconds.
     var tdate = new Date();
     var strArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var d = tdate.getDate();
@@ -56,8 +56,14 @@ app.post("/api/notes", function(req, res) {
     var s = tdate.getSeconds();
 
     currdate = '' + (d <= 9 ? '0' + d : d) + '-' + m + '-' + y + "_" + h + ":" + mi + ":" + s;
+
+    // Adding date to the note object
     note.id = currdate;
+
+    //pushing the new notes object into the notes array.
     notes.push(note);
+
+    // Writing notes array of objects to the db.json file.
     fs.writeFile("./db/db.json", JSON.stringify(notes), err => {
         // Checking for errors 
         if (err) throw err;
@@ -66,15 +72,17 @@ app.post("/api/notes", function(req, res) {
     return (notes);
 });
 
-
+// Delete a note
 app.delete("/api/notes/:id", function(req, res) {
 
+    // Run through the notes array and delete the object with an id that matches the id we are looking for.
     for (let i = 0; i < notes.length; i++) {
         if (notes[i].id === req.params.id) {
             notes.splice(i, 1);
         }
     };
 
+    // Write updated notes array to the db.json file.
     fs.writeFile("./db/db.json", JSON.stringify(notes), err => {
         // Checking for errors 
         if (err) throw err;
