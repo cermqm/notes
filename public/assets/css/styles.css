@@ -10,6 +10,15 @@ body {
     background-size: cover;
 }
 
+.jumbotron {
+    /* background-image: url("hyroglifics.jpg"); */
+    background: url("hyroglifics.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .save-note {
     display: none;
 }
@@ -48,7 +57,7 @@ body {
 }
 
 .list-container .card {
-    height: calc(100vh - 70px);
+    /* height: calc(100vh - 70px); */
     border-bottom: none;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -211,4 +220,17 @@ body {
 .tooltip-page-left:hover>span {
     visibility: visible;
     opacity: 1;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
 }
