@@ -41,6 +41,6 @@ License - [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
 ### - Videos
 Short video walking through the note app.
 
-[Running Tests](https://github.com/cermqm/employee/raw/master/running%20the%20tests.mp4) - click on link and mp4 will download.
+[Quick demo](https://github.com/cermqm/notes/raw/master/Notes%20demo.mp4) - click on link and mp4 will download.
 
 
