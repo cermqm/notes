@@ -65,11 +65,14 @@ app.post("/api/notes", function(req, res) {
 
     // Writing notes array of objects to the db.json file.
     fs.writeFile("./db/db.json", JSON.stringify(notes), err => {
-        // Checking for errors 
-        if (err) throw err;
-    })
-    res.send(req.params.id)
-    return (notes);
+            // Checking for errors 
+            if (err) throw err;
+        })
+        // res.send(req.params.id); - //can send data back - but don't need to this in this case
+        // res.json(req.params.id);
+        // json is formatted data - send it just text
+    res.end();
+    // return (notes);
 });
 
 // Delete a note
@@ -89,8 +92,11 @@ app.delete("/api/notes/:id", function(req, res) {
         // console.log("Done writing"); // Success
     })
 
-    res.send(req.params.id)
-    return (notes);
+    // res.send(req.params.id);
+    // res.json(req.params.id);
+    // res.end();
+    res.status(204).end(); //204 means deleted
+    // return (notes);
 });
 
 // Starts the server to begin listening
