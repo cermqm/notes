@@ -9,6 +9,7 @@ License - [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
 * [Contributing](#Contributing)
 * [Tests](#Tests)
 * [Questions](Questions)
+* [Videos](#Videos)
 
 
 ### - Installation Instructions
@@ -35,5 +36,11 @@ License - [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
     You can also log an issue under the specific project on GitHub - 
 
 [GitHub](https://github.com/cermqm)
+
+
+### - Videos
+Short video walking through the note app.
+
+[Running Tests](https://github.com/cermqm/employee/raw/master/running%20the%20tests.mp4) - click on link and mp4 will download.
 
 
